@@ -1,7 +1,6 @@
 def binarySearch(arr,target)
   low = 0
   high = arr.size - 1
-  # guess = arr[mid]
   while low <= high
     mid = (low + high)/2 # put this line inside while .. end block
     if arr[mid] > target
