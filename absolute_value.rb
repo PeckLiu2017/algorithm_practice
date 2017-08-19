@@ -7,4 +7,4 @@ def abs(x)
 end
 
 puts abs(ARGV[0].to_i) #Calculates the absolute value of an integer
-puts abs(ARGV[0].to_f)#Calculates the absolute value of a floating point number
+puts abs(ARGV[0].to_f) #Calculates the absolute value of a floating point number
