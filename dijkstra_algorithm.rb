@@ -1,3 +1,4 @@
+# use lambda for methods "find_lowest_cost_node" use shared varaiable "processed"
 lambda{
   graph = {}
   graph["start"] = {}
@@ -59,6 +60,6 @@ lambda{
     node = find_lowest_cost_node # 找出接下来要处理的节点，并循环
   end
 
-  puts parents
-  
+  puts parents # this hash shows the finally routes "start => b , b => a, a => fin"
+
 }.call
