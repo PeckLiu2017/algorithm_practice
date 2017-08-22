@@ -17,11 +17,12 @@ stations["kfive"] = ["ca", "az"].to_set
 final_stations = Set.new # 使用一个集合来存储最终选择的广播台
 
 while states_needed.size != 0
+  count = 0
   best_station = nil # 覆盖了最多的未覆盖州的广播台
-  states_covered = Set.new # 一个集合，包含该广播台覆盖的已有广播台未覆盖的州，就是要新加进去的州
+  states_covered = Set.new # 一个集合，用来储存该广播台覆盖的已有广播台未覆盖的州，就是要新加进去的州，每次进while循环都会清空
   stations.each do |station,states_for_station|
     puts "station is #{station}"
-    puts "states_for_station is #{states_for_station.map{|i| i} }"
+    puts "#{station} has #{states_for_station.map{|i| i} }"
     puts "states_needed is #{states_needed.map{|i| i}}"
     puts "states_covered is #{states_covered.map{|i| i}}"
     covered = states_needed & states_for_station # 要覆盖的州和当前广播台覆盖的所有的州，一点点加进已覆盖区域，包含当前广播台覆盖的一系列best_station还未覆盖的州
@@ -30,9 +31,11 @@ while states_needed.size != 0
       best_station = station
       states_covered = covered
     end
-    puts "#{covered.map{|i| i}}"
+    puts "after comparing, covered is #{covered.map{|i| i}}"
+    count += 1
     states_needed -= states_covered
     final_stations.add(best_station)
     puts "final_stations is #{final_stations.map{|i| i}.compact!}"
   end
+  puts "-------------------- times :#{count} --------------------"
 end
