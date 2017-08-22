@@ -1,4 +1,4 @@
-# use lambda for methods "find_lowest_cost_node" use shared varaiable "processed"
+# use lambda for methods "find_lowest_cost_node" use shared varaiable "processed" 用lambda创建共享变量使processed等突破def作用域门
 lambda{
   graph = {}
   graph["start"] = {}
@@ -11,14 +11,14 @@ lambda{
   graph["b"]["a"] = 3
   graph["b"]["fin"] = 5
 
-  graph["fin"] = {} # 终点没有任何邻居
+  graph["fin"] = {} # 终点没有任何邻居 fin is short for finally
 
-  infinity = 1.0/0
+  infinity = 1.0/0 # at first , i don't konw the route , so assume its length is infinity
 
   costs = {}
   costs["a"] = 6
   costs["b"] = 2
-  costs["fin"] = infinity
+  costs["fin"] = infinity # at first , i don't konw the route , so assume its length is infinity
 
   parents = {}
   parents["a"] = "start"
@@ -32,7 +32,7 @@ lambda{
     lowest_cost_node = nil
     costs.each do |node,costs| # 遍历所有的节点 costs["a"] = 6   costs["b"] = 2
       cost = costs
-      if cost < lowest_cost && !processed.include?(node)  # 如果当前节点的开销更低 且未处理过
+      if cost < lowest_cost && !processed.include?(node)  # 如果当前节点的开销更低且未处理过
           lowest_cost = cost # 就将其视为开销最低的节点
           lowest_cost_node = node
       end
@@ -41,10 +41,10 @@ lambda{
   end
 
   node = find_lowest_cost_node # 在未处理的节点中找出开销最小的节点
-  while node != nil # 这个while循环在所有节点都被处理过后结束 node = b
-    cost = costs[node] # 每个节点的花销 costs["b"] = 2
-    neighbors = graph[node] # 查出它们相邻节点的花销 graph["b"]["a"] = 3 graph["b"]["fin"] = 5
-    neighbors.keys.each do |n| # a fin
+  while node != nil # 这个while循环在所有节点都被处理过后结束
+    cost = costs[node] # 每个节点的花销
+    neighbors = graph[node] # 查出它们相邻节点的花销
+    neighbors.keys.each do |n| # n = a , fin
       puts "n is #{n},neighbors[#{n}] is #{neighbors[n]}"
       new_cost = cost + neighbors[n]
       puts "new_cost is #{new_cost}"
@@ -60,6 +60,6 @@ lambda{
     node = find_lowest_cost_node # 找出接下来要处理的节点，并循环
   end
 
-  puts parents # this hash shows the finally routes "start => b , b => a, a => fin"
+  puts parents # this hash shows the finally routes => "start => b , b => a, a => fin"
 
 }.call
