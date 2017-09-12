@@ -5,14 +5,14 @@ require 'set'
 # 比较当前的方案和best_station，如果比best_station用到的电台少，就用它的值更新best_station
 # 最后显示求出来的最优best_station及其覆盖范围
 
-states_needed = ["mt", "wa", "or", "id", "nv", "ut","ca", "az"].to_set #创建一个列表，其中包含要覆盖的州，列表无重复
+states_needed = Set.new(["mt", "wa", "or", "id", "nv", "ut","ca", "az"]) #创建一个列表，其中包含要覆盖的州，列表无重复
 
 stations = {} # 可供选择的广播台清单
-stations["kone"] = ["id", "nv", "ut"].to_set
-stations["ktwo"] = ["wa", "id", "mt"].to_set
-stations["kthree"] = ["or", "nv", "ca"].to_set
-stations["kfour"] = ["nv", "ut"].to_set
-stations["kfive"] = ["ca", "az"].to_set
+stations["kone"] = Set.new(["id", "nv", "ut"])
+stations["ktwo"] = Set.new(["wa", "id", "mt"])
+stations["kthree"] = Set.new(["or", "nv", "ca"])
+stations["kfour"] = Set.new(["nv", "ut"])
+stations["kfive"] = Set.new(["ca", "az"])
 
 final_stations = Set.new # 使用一个集合来存储最终选择的广播台
 
@@ -37,5 +37,6 @@ while states_needed.size != 0
     final_stations.add(best_station)
     puts "final_stations is #{final_stations.map{|i| i}.compact!}"
   end
+
   puts "-------------------- times :#{count} --------------------"
 end
