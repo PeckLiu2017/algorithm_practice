@@ -1,5 +1,5 @@
 # 题目要求：设计一个有 getMin（求最小值）功能的栈
-require_relative 'stack'
+require_relative '../common/stack'
 class MyStack1
   # @stackData用来存储所有压入的值
   # 同时
