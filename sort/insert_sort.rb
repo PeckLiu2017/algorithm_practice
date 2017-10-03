@@ -1,3 +1,5 @@
+# 注释来源：慕课网
+# 作者： visor_03389873 
 # 插入排序
 # 插入排序是通过比较找到合适的位置插入元素来排序
 # 就像打扑克牌
@@ -34,4 +36,4 @@ def insert_sort(arr)
 end
 
 arr = [5,3,8,6,4]
-p insert_sort(arr)
+p insert_sort(arr) #=> [3, 4, 5, 6, 8]
